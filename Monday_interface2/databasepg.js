@@ -1,3 +1,8 @@
+//this file establishes the postgresql database connection and inserts all the data in the board
+//see the schema directory
+
+// this is supposed to go index.js.it is here  to eliminate sources for bugs when writing out the code
+
 require('dotenv').config();
 const { Client } = require('pg');
 const config = require('./config')
@@ -33,8 +38,6 @@ async function insertMondayData(apiResponse) {
             }
          }
 
-
-
       console.log('Tables created and data inserted successfully.');
       }
    } catch (err) {
@@ -43,7 +46,8 @@ async function insertMondayData(apiResponse) {
       await client.end();
    }
 }
-//graph ql
+//graph ql api query
+//this query doesn't work in monday's api playground, but it works when this file calls the actual api.
 let query = `query {
   boards(workspace_ids: 3759369) {
     name
@@ -87,7 +91,7 @@ fetch ("https://api.monday.com/v2", {
    method: 'POST',
    headers: {
       'Content-Type': 'application/json',
-      'Authorization' : config.Authorization
+      'Authorization' : config.mondayToken
    },
    body: JSON.stringify({
       'query' : query

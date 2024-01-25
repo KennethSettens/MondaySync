@@ -1,4 +1,5 @@
 'use strict';
+const config = require('./config')
 // import fetch from 'node-fetch';
 const pgdatabase = require('./databasepg')
 const express = require('express');
@@ -7,8 +8,8 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const app = express().use(bodyParser.json()); // creates http server
 const port = 3000;
-const mondayToken = 'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjI4MTYxMDEwNSwiYWFpIjoxMSwidWlkIjoyODkyMTkxMiwiaWFkIjoiMjAyMy0wOS0xM1QxNTo1NzowMC4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTA2NTgzOTIsInJnbiI6InVzZTEifQ.dpP6NitDswhtTvGu7T4YNucONQtJH7HbbZzcwqr0PVU'; // type here your verification token
-const devopsToken = '63jze6niiv34ukrbicrly3fiusco3kf3pwpykjrz6z2tbomymmfq';
+const mondayToken = config.mondayToken; // type here your verification token
+const devopsToken = config.devopsToken;
 
 
 //
